@@ -1,8 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `dojos_y_ninjas` /*!40100 DEFAULT CHARACTER SET utf8mb3 */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `dojos_y_ninjas`;
+CREATE DATABASE  IF NOT EXISTS `users_db` /*!40100 DEFAULT CHARACTER SET utf8mb3 */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `users_db`;
 -- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
--- Host: localhost    Database: dojos_y_ninjas
+-- Host: localhost    Database: users_db
 -- ------------------------------------------------------
 -- Server version	8.0.34
 
@@ -18,29 +18,34 @@ USE `dojos_y_ninjas`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `dojos`
+-- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `dojos`;
+DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `dojos` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL,
-  `created_at` datetime NOT NULL,
+CREATE TABLE `users` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `email` varchar(55) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  UNIQUE KEY `email_UNIQUE` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `dojos`
+-- Dumping data for table `users`
 --
 
-LOCK TABLES `dojos` WRITE;
-/*!40000 ALTER TABLE `dojos` DISABLE KEYS */;
-INSERT INTO `dojos` VALUES (1,'Online','2023-08-28 21:28:18',NULL),(2,'Paraguay','2023-08-28 21:29:35',NULL),(3,'Chile','2023-08-28 21:50:21',NULL);
-/*!40000 ALTER TABLE `dojos` ENABLE KEYS */;
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'Jessica','Armoa','jess@gmail.com','$2b$12$N/uU1o2Ngj9ir41W2AJilOTct5uMTggKS8.IZD8R7Ji2s2hPM24Fe','2023-08-29 19:26:19',NULL),(2,'Angela','Galeano','angy@gmail.com','$2b$12$vxnHyjapeSBvdRF9jhk1OOybnD0FW7EGkX2BxbV03EYDD63jpUpUa','2023-08-29 19:49:56',NULL),(3,'Jessica','Armoa','jessyarmoa@gmail.com','$2b$12$YJx9jTsUG7DVCpn5JiJLiuPCb2n6rv5mL/v22IZxknFZLbtHFZzDy','2023-08-29 21:10:47',NULL);
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -52,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-08-28 23:30:15
+-- Dump completed on 2023-08-30  9:52:20
