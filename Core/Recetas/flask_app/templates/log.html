@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+  {% block titulo %}Inicio{% endblock %}
+
+  {% block contenido %}
+  <div class="d-flex">
+    <div class="container">
+      <h1 class="mb-2">Register</h1>
+      <form method="post" action="/register" class="row g-3 needs-validation" novalidate>
+        <div class="mb-1">
+          <label for="validationTooltipFirstName" class="form-label">First name</label>
+          <input type="text" name="first_name" class="form-control" id="validationTooltipFirstName" required>
+        </div>
+        <div class="mb-1">
+          <label for="validationTooltipLastName" class="form-label">Last name</label>
+          <input type="text" name="last_name" class="form-control" id="validationTooltipLastName" required>
+        </div>
+        <div class="mb-1">
+          <label for="validationTooltipEmail" class="form-label">Email</label>
+          <div class="input-group has-validation">
+            <input type="email" name="email" class="form-control" id="validationTooltipEmail" aria-describedby="validationTooltipEmailPrepend"
+              placeholder="name@example.com" required>
+          </div>
+        </div>
+        <div class="mb-1">
+          <label for="validationTooltipPassword" class="form-label">Password</label>
+          <div class="input-group has-validation">
+            <input type="password" name="password" class="form-control" id="validationTooltipPassword" aria-describedby="validationTooltipPasswordPrepend" required>
+          </div>
+        </div>
+        <div class="mb-1">
+          <label for="validationTooltipPassword2" class="form-label">Confirm Password</label>
+          <div class="input-group has-validation">
+            <input type="password" name="confirm_password" class="form-control" id="validationTooltipPassword2" aria-describedby="validationTooltipPasswordPrepend" required>
+          </div>
+        </div>
+        <div class="col-12">
+          <button class="btn btn-primary" type="submit">Register</button>
+        </div>
+      </form>
+    </div>
+    <div class="container">
+      <h1 class="mb-2">Login</h1>
+      <form method="post" action="/login" class="row g-3 needs-validation" novalidate>
+        <div class="mb-1">
+          <label for="validationTooltipEmailLogin" class="form-label">Email</label>
+          <div class="input-group has-validation">
+            <input type="email" name="email" class="form-control" id="validationTooltipEmailLogin" aria-describedby="validationTooltipEmailPrepend"
+              placeholder="name@example.com" required>
+          </div>
+        </div>
+        <div class="mb-1">
+          <label for="validationTooltipPasswordLogin" class="form-label">Password</label>
+          <div class="input-group has-validation">
+            <input type="password" name="password" class="form-control" id="validationTooltipPasswordLogin" aria-describedby="validationTooltipPasswordPrepend" required>
+          </div>
+        </div>
+        <div class="col-12">
+          <button class="btn btn-primary" type="submit">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  {% endblock %}
+
+  {% block scripts %}
+  <script type="text/javascript">
+    (() => {
+    'use strict'
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll('.needs-validation')
+
+    // Loop over them and prevent submission
+    Array.from(forms).forEach(form => {
+      form.addEventListener('submit', event => {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+  })()
+  </script>
+  {% endblock %}
