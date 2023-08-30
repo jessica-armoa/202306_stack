@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+  {% block titulo %}Edit{% endblock %}
+
+  {% block contenido %}
+    <div class="container">
+      <h1 class="mb-2">Edit Recipe!</h1>
+
+      <div class="mt-2 d-flex justify-content-between">
+        <p></p>
+        <div class="links">
+          <a href="/recipes" class="me-5">back to recipes</a>
+          <a href="/logout">Logout</a>
+        </div>
+      </div>
+
+      <form method="post" action="/recipes/edit/{{recipe.id}}/process" class="row g-3 mt-2 needs-validation row align-items-center" novalidate>
+        <div class="col-6 me-5">
+          <div class="mb-1">
+            <label for="validationTooltipName" class="form-label">Name</label>
+            <input type="text" name="name" class="form-control" id="validationTooltipName" value="{{recipe.name}}" required>
+          </div>
+          <div class="mb-1">
+            <label for="validationTooltipDescription" class="form-label">Description</label>
+            <textarea name="description" class="form-control" id="validationTooltipDescription" cols="10" rows="3" required>{{recipe.description}}</textarea>
+          </div>
+          <div class="mb-1">
+            <label for="validationTooltipInstructions" class="form-label">Instructions</label>
+            <textarea name="instructions" class="form-control" id="validationTooltipInstructions" cols="10" rows="3" required>{{recipe.instructions}}</textarea>
+          </div>
+        </div>
+
+        <div class="col-3 ms-5">
+          <div class="mb-1 col-auto">
+            <label for="validationTooltipDate" class="form-label">Date Coocked/Made</label>
+            <div class="input-group has-validation">
+              <input type="date" name="date_coocked" class="form-control" id="validationTooltipDate" value="{{recipe.date_coocked}}" required>
+            </div>
+          </div>
+          <div class="mb-1 mt-5">
+            <label class="form-label">Under 30 minutes</label>
+            <div class="d-flex">
+              <div class="form-check">
+                <input type="radio" name="under_30" id="yes" value="True" class="form-check-input" {% if recipe.under_30 %}checked{% endif %}>
+                <label class="form-check-label" for="yes">Yes</label>
+              </div>
+              <div class="form-check ms-3">
+                <input type="radio" name="under_30" id="no" value="False" class="form-check-input" {% if not recipe.under_30 %}checked{% endif %}>
+                <label class="form-check-label" for="no">No</label>
+              </div>
+            </div>
+          </div>
+          <div class="mt-5 d-flex justify-content-end">
+            <button class="btn btn-primary" type="submit">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+  {% endblock %}
+
+  {% block scripts %}
+  <script type="text/javascript">
+    (() => {
+    'use strict'
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll('.needs-validation')
+
+    // Loop over them and prevent submission
+    Array.from(forms).forEach(form => {
+      form.addEventListener('submit', event => {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+  })()
+  </script>
+  {% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+  {% block titulo %}Recipe{% endblock %}
+
+  {% block contenido %}
+    <div class="d-flex justify-content-between align-items-center">
+      <h1>Welcome, {{user_in_session.first_name}}</h1>
+      <div class="navegation mt-2">
+        <a href="/recipes">back to recipes</a>
+        <a href="/logout" class="ms-5">Logout</a>
+      </div>
+    </div>
+
+    <div class="mt-2 d-flex justify-content-between align-items-center">
+      <h2>{{recipe.name}}</h2>
+      <p>Posted by: {{users[recipe.user_id].first_name}}</p>
+    </div>
+
+    <div class="d-flex" style="border: 1px solid black; padding:10px;">
+      <div class="col-3 m-2">
+        <p>Description:</p>
+        <p>Under 30 minutes?</p>
+        <p>Instructions:</p>
+        <p>Date Made:</p>
+      </div>
+      <div class="col-6 m-2">
+        <p>{{recipe.description}}</p>
+        <p>{{"yes" if recipe.under_30 else "no"}}</p>
+        <p>{{recipe.instructions}}</p>
+        <p>{{recipe.date_coocked}}</p>
+      </div>
+    </div>
+  {% endblock %}

@@ -3,6 +3,39 @@
   {% block titulo %}Home{% endblock %}
 
   {% block contenido %}
-  <h1> Welcome {{user.first_name}} {{user.last_name}}</h1>
-  <a href="/logout" class="btn btn-primary">Logout</a>
+  <h1>Welcome, {{user_in_session.first_name}}</h1>
+
+  <div class="mt-2 d-flex justify-content-between">
+    <p>All posted recipes</p>
+    <div class="links">
+      <a href="/recipes/new" class="me-5">+ Create</a>
+      <a href="/logout">Logout</a>
+    </div>
+  </div>
+
+  <table class="table table-hover">
+    <thead class="table-dark">
+      <td>Name</td>
+      <td>Under</td>
+      <td>Posted By</td>
+      <td>Actions</td>
+    </thead>
+    <tbody>
+      {% for recipe in recipes %}
+        <tr>
+          <td>{{recipe.name}}</td>
+          <td>{{ "yes" if recipe.under_30 else "no" }}</td>
+          <td>{{users[recipe.user_id].first_name}}</td>
+          <td>
+            {% if recipe.user_id == user_in_session.id %}
+              <p><a href="/recipes/{{recipe.id}}">view recipe</a> | <a href="/recipes/edit/{{recipe.id}}">edit</a> | <a href="/recipes/delete/{{recipe.id}}">delete</a></p>
+            {% else %}
+              <a href="/recipes/{{recipe.id}}">view recipe</a>
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
   {% endblock %}

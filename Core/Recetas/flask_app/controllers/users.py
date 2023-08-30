@@ -10,10 +10,6 @@ from flask_app.models.user import User
 def inicio():
     return render_template("log.html")
 
-@app.route("/home")
-def home():
-    return render_template("home.html", user=User.get_by_id(session['user_id']))
-
 @app.route('/register', methods=['POST'])
 def register():
     # validar el formulario
@@ -32,7 +28,7 @@ def register():
     user_id = User.save(data)
     # almacenar id de usuario en la sesión
     session['user_id'] = user_id
-    return redirect("/home")
+    return redirect("/recipes")
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -49,7 +45,7 @@ def login():
         return redirect('/')
     # si las contraseñas coinciden, configuramos el user_id en sesión
     session['user_id'] = user_in_db.id
-    return redirect("/home")
+    return redirect("/recipes")
 
 @app.route('/logout')
 def logout():

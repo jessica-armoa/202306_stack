@@ -20,7 +20,7 @@ class User:
     @classmethod
     def get_all(cls):
         query = "SELECT * FROM users;"
-        results = connectToMySQL('users_db').query_db(query)
+        results = connectToMySQL('recipes_db').query_db(query)
         print(results)
         # crear una lista vacía para agregar nuestras instancias de users
         users = []
@@ -33,8 +33,8 @@ class User:
     def get_by_email(cls, email):
         data = {'email' : email}
         query = "SELECT * FROM users WHERE email = %(email)s;"
-        results = connectToMySQL('users_db').query_db(query,data)
-        print(results[0])
+        results = connectToMySQL('recipes_db').query_db(query,data)
+        print(results)
         if results:
             return cls(results[0])
         return None
@@ -43,7 +43,7 @@ class User:
     def get_by_id(cls, id):
         data = {'id' : id}
         query = "SELECT * FROM users WHERE id = %(id)s;"
-        results = connectToMySQL('users_db').query_db(query,data)
+        results = connectToMySQL('recipes_db').query_db(query,data)
         print(results[0])
         if results:
             return cls(results[0])
@@ -53,7 +53,7 @@ class User:
     def save(cls, data ):
         query = "INSERT INTO users (first_name, last_name, email, password, created_at) VALUES ( %(first_name)s, %(last_name)s, %(email)s, %(password)s, NOW());"
         # data es un diccionario que se pasará al método de guardar desde server.py
-        return connectToMySQL('users_db').query_db( query, data )
+        return connectToMySQL('recipes_db').query_db( query, data )
 
     @staticmethod
     def validate_user(data):
