@@ -1,0 +1,12 @@
+div#datos{
+  display: none;
+}
+
+div.cookies{
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+}
+#cookie, .cookie_description, .btn{
+  margin: 20px;
+}

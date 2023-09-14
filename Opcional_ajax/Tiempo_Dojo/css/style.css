@@ -1,0 +1,109 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+header{
+  background-color:skyblue;
+  color: white;
+}
+
+.flex{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container{
+  width: 80vw;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.navbar{
+  width: 50vw;
+  margin-left: 10px;
+  justify-content: space-evenly;
+}
+
+.navbar-option{
+  cursor: pointer;
+}
+
+.ubication{
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px black solid;
+}
+
+p.label_select{
+  margin-right: 10px;
+}
+
+.cards{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.card{
+  background-color:lightgrey;
+  padding: 10px;
+  text-align: center;
+  margin-top: 5px;
+}
+.cards .card:not(:last-child) {
+  margin-right: 10px;
+}
+
+img{
+  border-radius: 50%;
+  width: 12vw;
+  margin: 10px;
+}
+
+.temperatures{
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 20px;
+}
+
+p.max{
+  color: red;
+  margin: 5px;
+}
+p.min{
+  color:blue;
+  margin: 5px;
+}
+
+.cookies{
+  border: 1px solid black;
+  position: fixed;
+  width: 80vw;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+button{
+  margin: 10px;
+  padding: 5px;
+  background-color:cornflowerblue;
+  box-shadow: 2px 2px black;
+}
+
+img#cookie{
+  flex: 1;
+}
+
+.cookie_description{
+  flex: 3;
+}
+
+#cookie_title{
+  margin: 10px 0;
+}
